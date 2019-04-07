@@ -1,0 +1,36 @@
+﻿@page
+@model MVA_Beginner.Pages.ReadModel
+@{
+    ViewData["Title"] = "Read";
+}
+
+<h2>Read</h2>
+
+@if(Model.Message!=null)
+{
+    <script>alert("@Model.Message");</script>
+}
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Customer customer in Model.Customers)
+            {
+                <tr>
+                    <td>@customer.ID</td>
+                    <td>@customer.Name</td>
+                    <td><a asp-page="./Edit" asp-route-id="@customer.ID">Edit</a></td>
+                    <td><button type="submit" asp-page-handler="delete" asp-route-id="@customer.ID">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+<a asp-page="./Create">Create</a>

@@ -1,0 +1,20 @@
+﻿@page "{id:int}"
+@model MVA_Beginner.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Customer @Model.Customer.ID</h2>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="Customer.ID" type="hidden" />
+    <div>
+        <label asp-for="Customer.Name" />
+        <input asp-for="Customer.Name" />
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+
